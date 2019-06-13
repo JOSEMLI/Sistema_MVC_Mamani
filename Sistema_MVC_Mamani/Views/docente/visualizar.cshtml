@@ -1,0 +1,56 @@
+﻿@model Sistema_MVC_Mamani.Models.Docente
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/docente"> Docente</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.apellido , @Model.nombre</li>
+
+    </ol>
+
+</nav>
+
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada del Docente
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.docente_id</dd>
+            <dt>Codigo</dt>
+            <dd>@Model.docente_codigo</dd>
+            <dt>DNI</dt>
+            <dd>@Model.dni</dd>
+            <dt>Apellido</dt>
+            <dd>@Model.apellido</dd>
+            <dt>Nombre</dt>
+            <dd>@Model.nombre</dd>
+            <dt>Sexo</dt>
+            <dd>@Model.sexo</dd>
+            <dt>Email</dt>
+            <dd>@Model.email</dd>
+            <dt>Celular</dt>
+            <dd>@Model.celular</dd>
+            <dt>Cargo</dt>
+            <dd>@Model.cargo</dd>
+            <dt>Condicion</dt>
+            <dd>@Model.condicion</dd>
+            <dt>Categoria</dt>
+            <dd>@Model.categoria</dd>
+            <dt>Foto</dt>
+            <dd>@Model.foto</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado</dd>
+        </dl>
+    </div>
+
+</div>
+<br /><br />

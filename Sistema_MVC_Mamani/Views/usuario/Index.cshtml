@@ -1,0 +1,49 @@
+﻿@model List<Sistema_MVC_Mamani.Models.Usuario> 
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="card text-center">Gestion de Usuarios</h2>
+
+<div class="text-right">
+    <a href="~/usuario/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+
+<table id="datatable1" class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:70px">Docente</th>
+            <th style="width:70px">Nombre</th>
+            <th style="width:70px">Nivel</th>
+            <th style="width:70px">Avatar</th>
+            <th style="width:70px">Estado</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+    {
+        <tr>
+            <th>@(u.usuario_id)</th>
+            <th>@(u.Docente.apellido + " , " + u.Docente.nombre)</th>
+            <th>@(u.nombre)</th>
+            <th>@(u.nivel)</th>
+            <th>@(u.avatar)</th>
+            <th>@(u.estado)</th>
+            <th style="align-content:center">
+                <a href="~/usuario/visualizar/@u.usuario_id" class="btn btn-warning">Visualizar</a>
+                <a href="~/usuario/agregareditar/@u.usuario_id" class="btn btn-primary">Modificar</a>
+                <a href="~/usuario/eliminar/@u.usuario_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+            </th>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+

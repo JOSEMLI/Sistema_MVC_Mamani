@@ -1,0 +1,82 @@
+﻿@model Sistema_MVC_Mamani.Models.Criterio
+@{
+    List<Sistema_MVC_Mamani.Models.Modelo> modelo = ViewBag.modelo;
+    ViewBag.Title = "agregareditar";
+}
+<center><h2 class="card text-center">Agregar Editar</h2></center>
+
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/criterio"> Criterio</a>
+        </li>
+        <li class=" breadcrumb-item active">
+            @(Model.criterio_id > 0 ? Model.Modelo.nombre : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+
+
+
+@using (Html.BeginForm("guardar", "criterio", FormMethod.Post, new { id = "frm-criterio" }))
+{
+    @Html.HiddenFor(x => x.criterio_id)
+
+    <div class="card">
+        <div class="card-header">
+            Informacion del Control
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.criterio_id, new { @class = "form-control", disabled = true })
+                </div>
+                <div class="form-group"> 
+                    @Html.Label("Modelo")
+                    <select name="docente_id" class="form-control">
+                        <option @(Model.modelo_id.Equals("") ? "selected" : "" ) value="">--Seleccione--</option>
+                        @foreach(var d in modelo)
+                        {
+                            <option @(Model.modelo_id.Equals(d.modelo_id) ? "selected" : "") value="@d.modelo_id">@d.nombre</option>
+                        }
+
+                    </select>
+                    @Html.ValidationMessageFor(x => x.modelo_id, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Nombre en Español")
+                    @Html.TextBoxFor(x => x.nombre_spanish, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.nombre_spanish, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Nombre en Ingles")
+                    @Html.TextBoxFor(x => x.nombre_english, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.nombre_english, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Url")
+                    @Html.TextBoxFor(x => x.urlcriterio, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.urlcriterio, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Descripcion")
+                    @Html.TextBoxFor(x => x.descripcion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.descripcion, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Estado")
+                    <select name="estado" class="form-control">
+                        <option @(Model.estado == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.estado == "A" ? "Selected" : "") value="A">Activo</option>
+                        <option @(Model.estado == "I" ? "Selected" : "") value="I">Inactivo</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.estado, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/criterio" class="btn btn-danger">Cancelar</a>
+    </div>
+    <br /><br />
+}

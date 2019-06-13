@@ -1,0 +1,39 @@
+﻿@model Sistema_MVC_Mamani.Models.Modelo
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/modelo"> Modelo</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.nombre</li>
+
+    </ol>
+
+</nav>
+
+
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada del Modelo
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.modelo_id</dd>
+            <dt>Nombre</dt>
+            <dd>@Model.nombre</dd>
+            <dt>Descripcion</dt>
+            <dd>@Model.descripcion</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado</dd>
+        </dl>
+    </div>
+
+</div>
+<br /><br />

@@ -1,0 +1,88 @@
+﻿@model Sistema_MVC_Mamani.Models.DetalleAsignacion
+@{
+    List<Sistema_MVC_Mamani.Models.Asignacion> asignacion = ViewBag.asignacion;
+    List<Sistema_MVC_Mamani.Models.Docente> docente = ViewBag.docente;
+    List<Sistema_MVC_Mamani.Models.Criterio> criterio = ViewBag.criterio;
+    ViewBag.Title = "agregareditar";
+}
+
+<center><h2 class="card text-center">Agregar Editar</h2></center>
+
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/asignacion/visualizar/@Model.asignacion_id">Detalle Asignacion</a>
+        </li>
+        <li class=" breadcrumb-item active">
+            @(Model.detalleasignacion_id > 0 ? Model.estado : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+
+
+@using (Html.BeginForm("guardar", "detalleasignacion", FormMethod.Post, new { id = "frm-detalleasignacion" }))
+{
+    @Html.HiddenFor(x => x.detalleasignacion_id)
+
+    <div class="card">
+        <div class="card-header">
+            Informacion de Asignacion Detalle
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.detalleasignacion_id, new { @class = "form-control", disabled = true })
+                </div>
+                <div class="form-group"> 
+                    @Html.Label("Asignacion")
+                    <select name="asignacion_id" class="form-control">
+                        <option @(Model.asignacion_id.Equals("") ? "selected" : "" ) value="">--Seleccione--</option>
+                        @foreach(var a in asignacion)
+                        {
+                            <option @(Model.asignacion_id.Equals(a.asignacion_id) ? "selected" : "") value="@a.asignacion_id">@a.titulo</option>
+                        }
+
+                    </select>
+                    @Html.ValidationMessageFor(x => x.asignacion_id, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group"> 
+                    @Html.Label("Docente")
+                    <select name="docente_id" class="form-control">
+                        <option @(Model.asignacion_id.Equals("") ? "selected" : "" ) value="">--Seleccione--</option>
+                        @foreach(var doc in docente)
+                        {
+                            <option @(Model.docente_id.Equals(doc.docente_id) ? "selected" : "") value="@doc.docente_id">@doc.nombre</option>
+                        }
+
+                    </select>
+                    @Html.ValidationMessageFor(x => x.docente_id, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group"> 
+                    @Html.Label("Criterio")
+                    <select name="criterio_id" class="form-control">
+                        <option @(Model.criterio_id.Equals("") ? "selected" : "" ) value="">--Seleccione--</option>
+                        @foreach(var cr in criterio)
+                        {
+                            <option @(Model.criterio_id.Equals(cr.criterio_id) ? "selected" : "") value="@cr.criterio_id">@cr.nombre_spanish </option>
+                        }
+
+                    </select>
+                    @Html.ValidationMessageFor(x => x.criterio_id, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Estado")
+                    <select name="estado" class="form-control">
+                        <option @(Model.estado == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.estado == "A" ? "Selected" : "") value="A">Activo</option>
+                        <option @(Model.estado == "I" ? "Selected" : "") value="I">Inactivo</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.estado, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/detalleasignacion" class="btn btn-danger">Cancelar</a>
+    </div>
+    <br /><br />
+}

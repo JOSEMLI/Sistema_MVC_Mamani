@@ -1,0 +1,47 @@
+﻿@model List<Sistema_MVC_Mamani.Models.EvidenciaActividad>
+@{
+    ViewBag.Title = "Index";
+}
+<h2 class="card text-center">Gestion de la Evidencia Actividad</h2>
+
+<div class="text-right">
+    <a href="~/evidenciaactividad/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:60px">Actividad</th>
+            <th style="width:80px">Archivo</th>
+            <th style="width:50px">Tamaño</th>
+            <th style="width:50px">Tipo</th>
+            <th style="width:50px">Descripcion</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ea in Model)
+        {
+            <tr>
+                <th>@(ea.evidenciaactividad_id)</th>
+                <th>@(ea.Actividad.nombre)</th>
+                <th>@(ea.archivo)</th>
+                <th>@(ea.tamanio)</th>
+                <th>@(ea.tipo)</th>
+                <th>@(ea.descripcion)</th>
+                <th style="align-content:center">
+                    <a href="~/evidenciaactividad/visualizar/@ea.evidenciaactividad_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/evidenciaactividad/agregareditar/@ea.evidenciaactividad_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/evidenciaactividad/eliminar/@ea.evidenciaactividad_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+<br /><br />

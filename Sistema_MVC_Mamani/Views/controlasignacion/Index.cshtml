@@ -1,0 +1,46 @@
+﻿@model List<Sistema_MVC_Mamani.Models.ControlAsignacion>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="card text-center">Gestion de Control de Asignacion</h2>
+
+<div class="text-right">
+    <a href="~/controlasignacion/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+<table id="datatable1" class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:60px">Control</th>
+            <th style="width:80px">Docente</th>
+            <th style="width:50px">Criterio</th>
+            <th style="width:80px">Fecha Asignacion</th>
+            <th style="width:40px">Estado</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ca in Model)
+        {
+            <tr>
+                <th>@(ca.controlasignacion_id)</th>
+                <th>@(ca.Control.titulo)</th>
+                <th>@(ca.Docente.nombre)</th>
+                <th>@(ca.Criterio.nombre_spanish)</th>
+                <th>@(ca.fechaasignacion)</th>
+                <th>@(ca.estado)</th>
+                <th style="align-content:center">
+                    <a href="~/controlasignacion/visualizar/@ca.controlasignacion_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/controlasignacion/agregareditar/@ca.controlasignacion_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/controlasignacion/eliminar/@ca.controlasignacion_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+

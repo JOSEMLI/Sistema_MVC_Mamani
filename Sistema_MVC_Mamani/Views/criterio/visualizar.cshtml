@@ -1,0 +1,43 @@
+﻿@model Sistema_MVC_Mamani.Models.Criterio
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/criterio"> Criterio</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.Modelo.nombre</li>
+
+    </ol>
+
+</nav>
+
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada del Criterio
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.criterio_id</dd>
+            <dt>Modelo</dt>
+            <dd>@Model.Modelo.nombre</dd>
+            <dt>Nombre en Spañol</dt>
+            <dd>@Model.nombre_spanish</dd>
+            <dt>Nombre en Ingles</dt>
+            <dd>@Model.nombre_english</dd>
+            <dt>Url</dt>
+            <dd>@Model.urlcriterio</dd>
+            <dt>Descripcion</dt>
+            <dd>@Model.descripcion</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado</dd>
+        </dl>
+    </div>
+
+</div><br />

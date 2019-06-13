@@ -1,0 +1,104 @@
+﻿@model Sistema_MVC_Mamani.Models.Docente
+@{
+    ViewBag.Title = "agregareditar";
+}
+
+<center><h2 class="card text-center">Agregar Editar</h2></center>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/docente">Docente</a>
+        </li>
+        <li class="breadcrumb-item active">
+            @(Model.docente_id > 0 ? Model.apellido + " , " + Model.nombre : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+@using (Html.BeginForm("guardar", "docente", FormMethod.Post, new { id = "frm-docente" }))
+{
+    @Html.HiddenFor(x => x.docente_id)
+    <div class="card">
+        <div class="card-header">
+            Informacion del Docente
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("ID")
+                    @Html.TextBoxFor(x => x.docente_id, new { @class = "form-control", disabled = true })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Codigo")
+                    @Html.TextBoxFor(x => x.docente_codigo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.docente_codigo, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("DNI")
+                    @Html.TextBoxFor(x => x.dni, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.dni, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Apellido")
+                    @Html.TextBoxFor(x => x.apellido, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.apellido, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Nombre")
+                    @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Sexo")
+                    <select name="sexo" class="form-control">
+                        <option @(Model.sexo == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.sexo == "M" ? "Selected" : "") value="M">Masculino</option>
+                        <option @(Model.sexo == "F" ? "Selected" : "") value="F">Femenino</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.sexo, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Email")
+                    @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.email, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Celular")
+                    @Html.TextBoxFor(x => x.celular, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.celular, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Cargo")
+                    @Html.TextBoxFor(x => x.cargo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.cargo, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Condicion")
+                    @Html.TextBoxFor(x => x.condicion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.condicion, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Categoria")
+                    @Html.TextBoxFor(x => x.categoria, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.categoria, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Foto")
+                    @Html.TextBoxFor(x => x.foto, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.foto, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Estado")
+                    <select name="estado" class="form-control">
+                        <option @(Model.estado == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.estado == "A" ? "Selected" : "") value="A">Activo</option>
+                        <option @(Model.estado == "I" ? "Selected" : "") value="I">Inactivo</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.estado, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/docente" class="btn btn-danger">Cancelar</a>
+    </div>
+}

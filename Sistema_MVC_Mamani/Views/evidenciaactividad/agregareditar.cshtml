@@ -1,0 +1,75 @@
+﻿@model Sistema_MVC_Mamani.Models.EvidenciaActividad
+@{
+
+    List<Sistema_MVC_Mamani.Models.Actividad> actividad = ViewBag.actividad;
+    ViewBag.Title = "agregareditar";
+}
+<center><h2 class="card text-center">Agregar Editar</h2></center>
+
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/evidenciaactividad">Evidencia Actividad</a>
+        </li>
+        <li class=" breadcrumb-item active">
+            @(Model.evidenciaactividad_id > 0 ? Model.Actividad.nombre : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+<br />
+
+@using (Html.BeginForm("guardar", "evidenciaactividad", FormMethod.Post, new { id = "frm-evidenciaactividad" }))
+{
+    @Html.HiddenFor(x => x.evidenciaactividad_id)
+
+    <div class="card">
+        <div class="card-header">
+            Informacion de la Actividad
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.evidenciaactividad_id, new { @class = "form-control", disabled = true })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Actividad")
+                    <select name="actividad_id" class="form-control">
+                        <option @(Model.actividad_id.Equals("") ? "selected" : "" ) value="">--Seleccione--</option>
+                        @foreach (var a in actividad)
+                        {
+                             <option @(Model.actividad_id.Equals(a.actividad_id) ? "selected" : "") value="@a.actividad_id">@a.nombre</option>
+                        }
+
+                    </select>
+                    @Html.ValidationMessageFor(x => x.actividad_id, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Archivo")
+                    @Html.TextBoxFor(x => x.archivo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.archivo, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Tamaño")
+                    @Html.TextBoxFor(x => x.tamanio, new { @class = "form-control", disabled = true })
+                    @Html.ValidationMessageFor(x => x.tamanio, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Tipo")
+                    @Html.TextBoxFor(x => x.tipo, new { @class = "form-control", disabled = true })
+                    @Html.ValidationMessageFor(x => x.tipo, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Descripcion")
+                    @Html.TextBoxFor(x => x.descripcion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.descripcion, null, new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="card text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/evidenciaactividad" class="btn btn-danger">Cancelar</a>
+    </div>
+    <br /><br />
+}

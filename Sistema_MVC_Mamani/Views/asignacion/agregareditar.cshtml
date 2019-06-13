@@ -1,0 +1,63 @@
+﻿@model Sistema_MVC_Mamani.Models.Asignacion
+@{
+    ViewBag.Title = "agregareditar";
+}
+
+<center><h2 class="card text-center">Agregar Editar</h2></center>
+
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/asignacion">Asignacion</a>
+        </li>
+        <li class=" breadcrumb-item active">
+            @(Model.asignacion_id > 0 ? Model.titulo : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+
+@using (Html.BeginForm("guardar", "asignacion", FormMethod.Post, new { id = "frm-asignacion" }))
+{
+    @Html.HiddenFor(x => x.asignacion_id)
+
+    <div class="card">
+        <div class="card-header">
+            Informacion de la Asignacion
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.asignacion_id, new { @class = "form-control", disabled = true })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Semestre")
+                    @Html.TextBoxFor(x => x.semestre_id, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.semestre_id, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Titulo")
+                    @Html.TextBoxFor(x => x.titulo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.titulo, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Fecha Registro")
+                    @Html.TextBoxFor(x => x.fecharegistro, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.fecharegistro, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Estado")
+                    <select name="estado" class="form-control">
+                        <option @(Model.estado == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.estado == "A" ? "Selected" : "") value="A">Activo</option>
+                        <option @(Model.estado == "I" ? "Selected" : "") value="I">Inactivo</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.estado, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/asignacion" class="btn btn-danger">Cancelar</a>
+    </div>
+    <br /><br />
+}

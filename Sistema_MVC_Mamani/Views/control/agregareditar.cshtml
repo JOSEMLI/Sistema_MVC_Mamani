@@ -1,0 +1,73 @@
+﻿@model Sistema_MVC_Mamani.Models.Control
+@{
+    List<Sistema_MVC_Mamani.Models.Semestre> semestre = ViewBag.semestre;
+    ViewBag.Title = "agregareditar";
+}
+
+<center><h2 class="card text-center">Agregar Editar</h2></center>
+
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/control">Control</a>
+        </li>
+        <li class=" breadcrumb-item active">
+            @(Model.control_id > 0 ? Model.titulo : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+
+
+@using (Html.BeginForm("guardar", "control", FormMethod.Post, new { id = "frm-control" }))
+{
+    @Html.HiddenFor(x => x.control_id)
+
+    <div class="card">
+        <div class="card-header">
+            Informacion del Control
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.control_id, new { @class = "form-control", disabled = true })
+                </div>
+                <div class="form-group"> 
+                    @Html.Label("Semestre")
+                    <select name="semestre_id" class="form-control">
+                        <option @(Model.semestre_id.Equals("") ? "selected" : "" ) value="">--Seleccione--</option>
+                        @foreach(var s in semestre)
+                        {
+                            <option @(Model.semestre_id.Equals(s.semestre_id) ? "selected" : "") value="@s.semestre_id">@s.nombre</option>
+                        }
+
+                    </select>
+                    @Html.ValidationMessageFor(x => x.semestre_id, null, new { @class = "text-danger" })
+                </div>
+                
+                <div class="form-group">
+                    @Html.Label("Titulo")
+                    @Html.TextBoxFor(x => x.titulo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.titulo, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Fecha Creacion")
+                    @Html.TextBoxFor(x => x.fechacreacion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.fechacreacion, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Estado")
+                    <select name="estado" class="form-control">
+                        <option @(Model.estado == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.estado == "A" ? "Selected" : "") value="A">Activo</option>
+                        <option @(Model.estado == "I" ? "Selected" : "") value="I">Inactivo</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.estado, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/control" class="btn btn-danger">Cancelar</a>
+    </div>
+    <br /><br />
+}

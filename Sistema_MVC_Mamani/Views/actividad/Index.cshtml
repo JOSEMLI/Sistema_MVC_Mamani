@@ -1,0 +1,48 @@
+﻿@model List<Sistema_MVC_Mamani.Models.Actividad>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="card text-center">Gestion de Actividad</h2>
+
+<div class="text-right">
+    <a href="~/actividad/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:60px">Semestre</th>
+            <th style="width:80px">Criterio</th>
+            <th style="width:50px">Nombre</th>
+            <th style="width:50px">Descripcion</th>
+            <th style="width:50px">Fecha</th>
+            <th style="width:40px">Estado</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <th>@(a.actividad_id)</th>
+                <th>@(a.Semestre.nombre)</th>
+                <th>@(a.Criterio.nombre_spanish)</th>
+                <th>@(a.nombre)</th>
+                <th>@(a.descripcion)</th>
+                <th>@(a.fecha)</th>
+                <th>@(a.estado)</th>
+                <th style="align-content:center">
+                    <a href="~/actividad/visualizar/@a.actividad_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/actividad/agregareditar/@a.actividad_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/actividad/eliminar/@a.actividad_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+﻿@model List<Sistema_MVC_Mamani.Models.Modelo>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2 class="card text-center">Gestion de Modelo</h2>
+
+<div class="text-right">
+    <a href="~/modelo/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:100px">Nombre</th>
+            <th style="width:70px">Descripcion</th>
+            <th style="width:80px">Estado</th>
+            <th style="width:150px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <th>@(m.modelo_id)</th>
+                <th>@(m.nombre)</th>
+                <th>@(m.descripcion)</th>
+                <th>@(m.estado)</th>
+                <th style="align-content:center">
+                    <a href="~/modelo/visualizar/@m.modelo_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/modelo/agregareditar/@m.modelo_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/modelo/eliminar/@m.modelo_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

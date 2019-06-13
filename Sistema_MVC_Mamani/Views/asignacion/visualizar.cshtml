@@ -1,0 +1,82 @@
+﻿@model Sistema_MVC_Mamani.Models.Asignacion
+@{
+    List<Sistema_MVC_Mamani.Models.Docente> docente = ViewBag.docente;
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/asignacion"> Asignacion</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.titulo</li>
+
+    </ol>
+
+</nav>
+
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada de Asignacion
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.asignacion_id</dd>
+            <dt>Semestre</dt>
+            <dd>@Model.Semestre.nombre</dd>
+            <dt>Titulo</dt>
+            <dd>@Model.titulo</dd>
+            <dt>Fecha Registro</dt>
+            <dd>@Model.fecharegistro</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado</dd>
+        </dl>
+    </div>
+
+</div>
+<br />
+<center><h2 class="card text-center">Informacion detallada de Detalle Asignacion</h2></center>
+  
+<br />
+<div class="text-right">
+    <a href="~/detalleasignacion/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:60px">Asignacion</th>
+            <th style="width:80px">Docente</th>
+            <th style="width:50px">Criterio</th>
+            <th style="width:40px">Estado</th>
+            <th style="width:80px">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var da in Model.DetalleAsignacion)
+        {
+            <tr>
+                <th>@(da.detalleasignacion_id)</th>
+                <th>@(da.Asignacion.titulo)</th>
+                <th>@(da.docente_id)</th>
+                <th>@(da.criterio_id)</th>
+                <th>@(da.estado)</th>
+                <th style="align-content:center">
+                    <a href="~/detalleasignacion/visualizar/@da.detalleasignacion_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/detalleasignacion/agregareditar/@da.detalleasignacion_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/detalleasignacion/eliminar/@da.detalleasignacion_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<br /><br />

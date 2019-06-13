@@ -1,0 +1,79 @@
+﻿@model Sistema_MVC_Mamani.Models.Control
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/control"> Control</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.titulo</li>
+
+    </ol>
+
+</nav>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada del Control
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.control_id</dd>
+            <dt>Semestre</dt>
+            <dd>@Model.Semestre.nombre</dd>
+            <dt>Titulo</dt>
+            <dd>@Model.titulo</dd>
+            <dt>Fecha de Creacion</dt>
+            <dd>@Model.fechacreacion</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado</dd>
+        </dl>
+    </div>
+
+</div><br />
+<center><h2 class="card text-center">Informacion detallada de Control Detalle </h2></center>
+<br />
+<div class="text-right">
+    <a href="~/controlasignacion/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:40px">Id</th>
+            <th style="width:50px">Control</th>
+            <th style="width:60px">Fecha Asignacion</th>
+            <th style="width:60px">Fecha Culminacion</th>
+            <th style="width:40px">Duracion</th>
+            <th style="width:40px">Porcentaje</th>
+            <th style="width:150px">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cd in Model.ControlAsignacion)
+        {
+            <tr>
+                <th>@(cd.controlasignacion_id)</th>
+                <th>@(cd.Control.titulo)</th>
+                <th>@(cd.fechaasignacion)</th>
+                <th>@(cd.fechaculminacion)</th>
+                <th>@(cd.duracion)</th>
+                <th>@(cd.porcentaje)</th>
+                <th style="align-content:center">
+                    <a href="~/controlasignacion/visualizar/@cd.controlasignacion_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/controlasignacion/agregareditar/@cd.controlasignacion_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/controlasignacion/eliminar/@cd.controlasignacion_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+<br /><br />

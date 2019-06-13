@@ -1,0 +1,42 @@
+﻿@model List<Sistema_MVC_Mamani.Models.DetalleAsignacion>
+@{
+    ViewBag.Title = "Index";
+}
+<h2 class="card text-center">Gestion de  Detalle Asignacion</h2>
+
+<div class="text-right">
+    <a href="~/detalleasignacion/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:60px">Asignacion</th>
+            <th style="width:80px">Docente</th>
+            <th style="width:50px">Criterio</th>
+            <th style="width:40px">Estado</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var da in Model)
+        {
+            <tr>
+                <th>@(da.detalleasignacion_id)</th>
+                <th>@(da.Asignacion.titulo)</th>
+                <th>@(da.Docente.nombre)</th>
+                <th>@(da.Criterio.nombre_spanish)</th>
+                <th>@(da.estado)</th>
+                <th style="align-content:center">
+                    <a href="~/detalleasignacion/visualizar/@da.asignacion_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/detalleasignacion/agregareditar/@da.asignacion_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/detalleasignacion/eliminar/@da.asignacion_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

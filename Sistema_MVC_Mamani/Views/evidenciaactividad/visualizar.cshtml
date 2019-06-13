@@ -1,0 +1,40 @@
+﻿@model Sistema_MVC_Mamani.Models.EvidenciaActividad
+@{
+    ViewBag.Title = "visualizar";
+}
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/evidenciaactividad">Evidencia Actividad</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.Actividad.nombre</li>
+
+    </ol>
+
+</nav>
+<br />
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada de la Evidencia Actividad
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.evidenciaactividad_id</dd>
+            <dt>Actividad</dt>
+            <dd>@Model.Actividad.nombre</dd>
+            <dt>Archivo</dt>
+            <dd>@Model.archivo</dd>
+            <dt>Tamaño</dt>
+            <dd>@Model.tamanio</dd>
+            <dt>Tipo</dt>
+            <dd>@Model.tipo</dd>
+            <dt>Descripcion</dt>
+            <dd>@Model.descripcion</dd>
+        </dl>
+    </div>
+
+</div>
+<br />

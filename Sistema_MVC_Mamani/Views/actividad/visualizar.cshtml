@@ -1,0 +1,45 @@
+﻿@model Sistema_MVC_Mamani.Models.Actividad
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/actividad"> Actividad</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.nombre</li>
+
+    </ol>
+
+</nav>
+<br />
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada de la Actividad
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.actividad_id</dd>
+            <dt>Semestre</dt>
+            <dd>@Model.Semestre.nombre</dd>
+            <dt>Criterio</dt>
+            <dd>@Model.Criterio.nombre_spanish</dd>
+            <dt>Nombre</dt>
+            <dd>@Model.nombre</dd>
+            <dt>Descripcion</dt>
+            <dd>@Model.descripcion</dd>
+            <dt>Fecha</dt>
+            <dd>@Model.fecha</dd>
+            <dt>Url</dt>
+            <dd>@Model.urlactividad</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado</dd>
+        </dl>
+    </div>
+
+</div>
+<br />

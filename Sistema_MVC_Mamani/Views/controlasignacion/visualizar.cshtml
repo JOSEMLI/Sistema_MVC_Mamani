@@ -1,0 +1,62 @@
+﻿@model Sistema_MVC_Mamani.Models.ControlAsignacion
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/control/visualizar/@Model.control_id"> Control Asignacion</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.Control.titulo</li>
+
+    </ol>
+
+</nav>
+
+
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada del control Detalle
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.controlasignacion_id</dd>
+            <dt>Control</dt>
+            <dd>@Model.Control.titulo</dd>
+            <dt>Docente</dt>
+            <dd>@Model.Docente.nombre</dd>
+            <dt>Criterio</dt>
+            <dd>@Model.Criterio.nombre_spanish</dd>
+            <dt>Fecha asignacion</dt>
+            <dd>@Model.fechaasignacion</dd>
+            <dt>Fecha Culminacion</dt>
+            <dd>@Model.fechaculminacion</dd>
+            <dt>Duracion</dt>
+            <dd>@Model.duracion</dd>
+            <dt>Sustento</dt>
+            <dd>@Model.sustento</dd>
+            <dt>Porcentaje</dt>
+            <dd>@Model.porcentaje</dd>
+            <dt>Condicion</dt>
+            <dd>@Model.condicion</dd>
+            <dt>Archivo</dt>
+            <dd>@Model.archivo</dd>
+            <dt>Observacion</dt>
+            <dd>@Model.observacion</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado</dd>
+        </dl>
+    </div>
+
+</div>
+<br />
+<br />
+
+
+
+
